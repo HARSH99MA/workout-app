@@ -1,0 +1,9 @@
+<!-- src/app/components/pagination/pagination.component.html -->
+<nav>
+    <ul class="pagination">
+      <li class="page-item" *ngFor="let page of pages()">
+        <a class="page-link" (click)="setPage(page)">{{ page }}</a>
+      </li>
+    </ul>
+  </nav>
+  

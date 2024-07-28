@@ -1,0 +1,36 @@
+<!-- src/app/components/add-workout/add-workout.component.html -->
+
+<form [formGroup]="workoutForm" (ngSubmit)="addWorkout()">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Workout Name">
+      <mat-error *ngIf="workoutForm.get('name').hasError('required')">
+        Name is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Workouts</mat-label>
+      <input matInput formControlName="workouts" placeholder="Comma separated list of workouts">
+      <mat-error *ngIf="workoutForm.get('workouts').hasError('required')">
+        Workouts are required.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Total Minutes</mat-label>
+      <input matInput formControlName="totalMinutes" type="number" placeholder="Total minutes">
+      <mat-error *ngIf="workoutForm.get('totalMinutes').hasError('required')">
+        Total minutes are required.
+      </mat-error>
+      <mat-error *ngIf="workoutForm.get('totalMinutes').hasError('min')">
+        Total minutes must be greater than 0.
+      </mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Add Workout</button>
+  
+    <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  </form>
+  
